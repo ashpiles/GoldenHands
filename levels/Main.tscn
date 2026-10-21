@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://282swk7k254l"]
+
+[ext_resource type="Script" uid="uid://b28ove3xpxceu" path="res://scripts/Main.cs" id="1_ntnxr"]
+[ext_resource type="PackedScene" uid="uid://doa5apthnnq4f" path="res://card_game.tscn" id="4_vmibe"]
+
+[node name="Main" type="Node2D" unique_id=424430416]
+script = ExtResource("1_ntnxr")
+
+[node name="CardGame" parent="." unique_id=407262963 instance=ExtResource("4_vmibe")]

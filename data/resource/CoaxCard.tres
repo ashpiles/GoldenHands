@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CardFlyWeight" format=3 uid="uid://bd0tffpkmo5r3"]
+
+[ext_resource type="Script" uid="uid://bdje7oscrk87x" path="res://data/CardFlyWeight.cs" id="1_13yrx"]
+
+[resource]
+script = ExtResource("1_13yrx")
+metadata/_custom_type_script = "uid://bdje7oscrk87x"

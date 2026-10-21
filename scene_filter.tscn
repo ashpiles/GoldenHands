@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bg6omaoh3rsd0"]
+
+[ext_resource type="Texture2D" uid="uid://dula2n280jhhp" path="res://assets/UI/UI_Flat.png" id="1_ji4xw"]
+
+[node name="SceneFilter" type="Control" unique_id=630571736]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=614750022]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer" unique_id=450286868]
+layout_mode = 2
+texture = ExtResource("1_ji4xw")
+region_rect = Rect2(225, 161, 30, 30)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
