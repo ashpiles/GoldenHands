@@ -1,12 +1,13 @@
 using Godot;
-using GoldenHand.data;
+using GoldenHand.Data;
+using GoldenHand.Data.Flyweights;
 
-namespace GoldenHand.scripts;
+namespace GoldenHand.Scripts;
 
 public partial class Card : Control
 {
 	
-	[Export] public CardFlyWeight Data;
+	[Export] public CardFlyweight Data;
 	[Export] protected Texture2D CardBack;
 	public override void _Ready()
 	{

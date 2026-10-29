@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://rjmcsj0hchae"
+path="res://.godot/imported/GoldenHand.ink-6a5df51c3ffbf7fa996d01f041774ccd.res"
+
+[deps]
+
+source_file="res://Data/InkScripts/GoldenHand.ink"
+dest_files=["res://.godot/imported/GoldenHand.ink-6a5df51c3ffbf7fa996d01f041774ccd.res"]
+
+[params]
+
+is_main_file=false
+compress=true

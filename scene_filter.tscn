@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bg6omaoh3rsd0"]
 
-[ext_resource type="Texture2D" uid="uid://dula2n280jhhp" path="res://assets/UI/UI_Flat.png" id="1_ji4xw"]
+[ext_resource type="Texture2D" uid="uid://dula2n280jhhp" path="res://Assets/UI/UI_Flat.png" id="1_ji4xw"]
 
 [node name="SceneFilter" type="Control" unique_id=630571736]
 layout_mode = 3
