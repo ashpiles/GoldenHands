@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardCollectionModel" format=3 uid="uid://bs8xrvvbs47l"]
+
+[ext_resource type="Script" uid="uid://btwocnqg41aqi" path="res://Data/ReactiveVariant.cs" id="1_upvax"]
+[ext_resource type="Script" uid="uid://vs5mhafwhxwc" path="res://Data/Models/CardCollectionModel.cs" id="2_0bvrh"]
+
+[resource]
+script = ExtResource("2_0bvrh")
+metadata/_custom_type_script = "uid://vs5mhafwhxwc"

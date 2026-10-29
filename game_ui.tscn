@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://btkdt3l8wvvkd"]
+
+[ext_resource type="Texture2D" uid="uid://bh8o1flinfxw1" path="res://Assets/UI/GoldenHandUI.png" id="1_ltg2s"]
+[ext_resource type="Texture2D" uid="uid://dula2n280jhhp" path="res://Assets/UI/UI_Flat.png" id="1_ue6oa"]
+[ext_resource type="Texture2D" uid="uid://cv0si4qudn03l" path="res://Assets/Sprites/sonya.png" id="2_d6n2q"]
+[ext_resource type="PackedScene" uid="uid://x74vaotj3use" path="res://ink_story.tscn" id="4_3rlp6"]
+
+[sub_resource type="Resource" id="Resource_3rlp6"]
+metadata/__load_path__ = "res://data/ink_scripts/GoldenHand.ink"
+
+[node name="GameUI" type="Control" unique_id=2107304078]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1454634904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomBar" type="MarginContainer" parent="MarginContainer" unique_id=396488384]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/BottomBar" unique_id=988695736]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("1_ue6oa")
+region_rect = Rect2(130, 129, 28, 30)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/BottomBar" unique_id=469842398]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/BottomBar/HBoxContainer" unique_id=1936478900]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("1_ltg2s")
+region_rect = Rect2(0, 16, 48, 32)
+patch_margin_left = 1
+patch_margin_top = 2
+patch_margin_right = 1
+patch_margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/BottomBar/HBoxContainer/NinePatchRect" unique_id=1434447257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.999999
+offset_top = -29.999998
+offset_right = -13.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.215, 1.215)
+texture = ExtResource("2_d6n2q")
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/BottomBar/HBoxContainer" unique_id=257583201]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BottomBar/HBoxContainer" unique_id=1753057933]
+layout_mode = 2
+size_flags_vertical = 4
+offset_transform_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BottomBar/HBoxContainer/MarginContainer" unique_id=696343020]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/BottomBar/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1332073958]
+layout_mode = 2
+offset_transform_enabled = true
+
+[node name="InkBox" parent="MarginContainer/BottomBar/HBoxContainer/MarginContainer/VBoxContainer" unique_id=966217696 instance=ExtResource("4_3rlp6")]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+story = SubResource("Resource_3rlp6")

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://mcgqs8meus3w"]
+
+[ext_resource type="Script" path="res://scripts/Character.cs" id="1_lrhn5"]
+[ext_resource type="Texture2D" uid="uid://dm75wtpc4sidw" path="res://Assets/Sprites/GoldenHandSpriteSheet.png" id="2_rkhd4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrhn5"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my7n2"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp8ca"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lw5n"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cgup"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5ia6"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dpix"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hyy3"]
+atlas = ExtResource("2_rkhd4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrhn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my7n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp8ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lw5n")
+}],
+"loop": 1,
+"name": &"jeweler_walk_f",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cgup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5ia6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dpix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hyy3")
+}],
+"loop": 1,
+"name": &"sonya_walk_f",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(12, 14)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=366184089]
+script = ExtResource("1_lrhn5")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=708639101]
+unique_name_in_owner = true
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1vivr")
+animation = &"sonya_walk_f"
+frame_progress = 0.7270693
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=985290197]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_1vivr")

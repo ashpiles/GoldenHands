@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardCollectionModel" format=3 uid="uid://kfohn7m1eyn8"]
+
+[ext_resource type="Script" uid="uid://btwocnqg41aqi" path="res://Data/ReactiveVariant.cs" id="1_pmue2"]
+[ext_resource type="Script" uid="uid://vs5mhafwhxwc" path="res://Data/Models/CardCollectionModel.cs" id="2_ou8se"]
+
+[sub_resource type="Resource" id="Resource_hrpit"]
+script = ExtResource("1_pmue2")
+metadata/_custom_type_script = "uid://btwocnqg41aqi"
+
+[resource]
+script = ExtResource("2_ou8se")
+Cards = Array[ExtResource("1_pmue2")]([SubResource("Resource_hrpit")])
+metadata/_custom_type_script = "uid://vs5mhafwhxwc"
