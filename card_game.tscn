@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://doa5apthnnq4f"]
+
+[ext_resource type="Texture2D" uid="uid://cncov60j3b2wx" path="res://Assets/Sprites/jewler.png" id="1_2jybh"]
+[ext_resource type="Script" uid="uid://dhtljk5kae4j7" path="res://Scripts/card_game_model.gd" id="1_ev452"]
+[ext_resource type="Texture2D" uid="uid://ce2j7gnt5ibtg" path="res://Assets/UI/CardUI.png" id="2_csu0h"]
+[ext_resource type="FontFile" uid="uid://c3tqkphr0wqsm" path="res://Assets/Fonts/Beholden-Bold-Italic.ttf" id="2_p03o1"]
+[ext_resource type="Script" uid="uid://4585437b8bv1" path="res://addons/GodotInk/Src/InkStory.cs" id="5_5rvag"]
+[ext_resource type="Script" uid="uid://ctg3garr6xyk" path="res://Scripts/UserInterface/Presenters/DeckPresenter.cs" id="5_ev452"]
+[ext_resource type="Script" uid="uid://bs61dd8emiatr" path="res://Scripts/InkBox.cs" id="5_vimfd"]
+[ext_resource type="Resource" uid="uid://m24gp4xfrcq" path="res://Data/Resources/PlayerDeck.tres" id="6_ussl6"]
+[ext_resource type="Script" uid="uid://cxtuoxmsfem2l" path="res://Scripts/UserInterface/Views/DragDropView.cs" id="7_qiph0"]
+
+[sub_resource type="Resource" id="Resource_1vivr"]
+script = ExtResource("5_5rvag")
+metadata/_custom_type_script = "uid://4585437b8bv1"
+
+[node name="ViewModel" type="Control" unique_id=913401296]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ev452")
+metadata/_edit_vertical_guides_ = [-270.0]
+
+[node name="Root" type="MarginContainer" parent="." unique_id=2123138575]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Opponent" type="MarginContainer" parent="Root" unique_id=1139861032]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Root/Opponent" unique_id=1647523781]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Root/Opponent/Panel" unique_id=151487236]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2jybh")
+
+[node name="Cards" type="MarginContainer" parent="Root" unique_id=2005181807]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/Cards" unique_id=511086483]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="Root/Cards/VBoxContainer" unique_id=123511526]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p03o1")
+text = "Confidence"
+
+[node name="ConfidenceMeter" type="NinePatchRect" parent="Root/Cards/VBoxContainer" unique_id=692063683]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_csu0h")
+region_rect = Rect2(80, 80, 144, 16)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Root/Cards/VBoxContainer" unique_id=186669801]
+custom_minimum_size = Vector2(1100, 150)
+layout_mode = 2
+texture = ExtResource("2_csu0h")
+region_rect = Rect2(16, 192, 16, 16)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/Cards/VBoxContainer/NinePatchRect" unique_id=136518810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Root/Cards/VBoxContainer/NinePatchRect/HBoxContainer" unique_id=311111196]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Root/Cards/VBoxContainer/NinePatchRect/HBoxContainer" unique_id=354131237]
+layout_mode = 2
+
+[node name="DeckPresenter" type="Control" parent="Root/Cards/VBoxContainer/NinePatchRect/HBoxContainer" unique_id=1413060621]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("5_ev452")
+ModelResource = ExtResource("6_ussl6")
+metadata/_custom_type_script = "uid://ctg3garr6xyk"
+
+[node name="DragDropView" type="Control" parent="Root/Cards/VBoxContainer/NinePatchRect/HBoxContainer/DeckPresenter" unique_id=705774890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("7_qiph0")
+metadata/_custom_type_script = "uid://cxtuoxmsfem2l"
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/Cards/VBoxContainer/NinePatchRect/HBoxContainer/DeckPresenter/DragDropView" unique_id=369603372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/Cards/VBoxContainer/NinePatchRect/HBoxContainer/DeckPresenter/DragDropView/MarginContainer" unique_id=1139259560]
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 2
+
+[node name="Dialogue" type="MarginContainer" parent="Root" unique_id=858191126]
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Panel" type="Panel" parent="Root/Dialogue" unique_id=1166219340]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+offset_transform_position = Vector2(-25, 25)
+
+[node name="PanelContainer" type="PanelContainer" parent="Root/Dialogue/Panel" unique_id=1702663781]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.08
+anchor_right = 0.92
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Root/Dialogue/Panel/PanelContainer" unique_id=4436065]
+layout_mode = 2
+
+[node name="InkBox" type="VBoxContainer" parent="Root/Dialogue/Panel/PanelContainer/ScrollContainer" unique_id=1360511315]
+layout_mode = 2
+script = ExtResource("5_vimfd")
+story = SubResource("Resource_1vivr")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://x74vaotj3use"]
+
+[ext_resource type="Script" uid="uid://dl2qaf8ji1k1" path="res://scripts/InkBox.cs" id="1_ireb6"]
+[ext_resource type="Script" uid="uid://4585437b8bv1" path="res://addons/GodotInk/Src/InkStory.cs" id="2_huwqf"]
+
+[sub_resource type="Resource" id="Resource_ikegy"]
+script = ExtResource("2_huwqf")
+metadata/_custom_type_script = "uid://4585437b8bv1"
+
+[node name="InkStory" type="VBoxContainer" unique_id=966217696]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ireb6")
+story = SubResource("Resource_ikegy")

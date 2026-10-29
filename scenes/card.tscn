@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b7kl7kyi7r28o"]
+
+[ext_resource type="Script" uid="uid://dt32pq4vo7yv0" path="res://scripts/Card.cs" id="1_d81rb"]
+[ext_resource type="Script" uid="uid://bdje7oscrk87x" path="res://data/CardFlyWeight.cs" id="2_6u4wf"]
+
+[sub_resource type="Resource" id="Resource_6u4wf"]
+script = ExtResource("2_6u4wf")
+metadata/_custom_type_script = "uid://bdje7oscrk87x"
+
+[node name="Card" type="Control" unique_id=359239871]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_d81rb")
+Data = SubResource("Resource_6u4wf")

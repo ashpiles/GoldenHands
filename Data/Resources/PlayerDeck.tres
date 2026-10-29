@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CardCollectionModel" format=3 uid="uid://m24gp4xfrcq"]
+
+[ext_resource type="Script" uid="uid://vs5mhafwhxwc" path="res://Data/Models/CardCollectionModel.cs" id="1_p1rvy"]
+
+[resource]
+script = ExtResource("1_p1rvy")
+Cards = Object(RefCounted,"script":null)
+
+metadata/_custom_type_script = "uid://vs5mhafwhxwc"
