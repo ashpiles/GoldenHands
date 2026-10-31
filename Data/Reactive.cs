@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Specialized;
+using System.Collections.Generic;
 using Godot;
 
 namespace GoldenHand.Data;
@@ -25,26 +25,59 @@ public abstract partial class Reactive : RefCounted
     {
         add => Connect(SignalName.ReactiveChanged, Callable.From(value));
         remove => Disconnect(SignalName.ReactiveChanged, Callable.From(value)); 
-    }
-    
+    } 
 }
 
-/// <summary>
+public interface IReadOnlyReactive<out T>
+{
+    T Value { get; }
+    event Action<Variant> OnChanged;
+}
+
+public interface IReadOnlyReactiveArray<out T>
+{
+    T this[int index] { get; }
+    event Action<Variant> OnChanged;
+}
+
+public interface IReadOnlyReactiveDictionary<in TKey, out TValue>
+{
+    TValue this[TKey key] { get; }
+    event Action<Variant> OnChanged;
+    
+    public bool ContainsKey(TKey key);
+}
+ 
+///  <summary>
 /// <para><see cref="GoldenHand.Data.Reactive"/> type which wraps a <see cref="Godot.Variant"/></para>
 /// <para>Emits <see cref="GoldenHand.Data.Reactive.ReactiveChanged"/> signal when encapsulated variable is set</para>
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public partial class ReactiveVariant<[MustBeVariant] T> : Reactive
+public partial class ReactiveVariant<[MustBeVariant] T> : Reactive, IReadOnlyReactive<T>
 {
 
-    private T reactiveValue; 
+    private T? reactiveValue;
+
+    public ReactiveVariant() { }
+
+    public ReactiveVariant(T value)
+    {
+        reactiveValue = value;
+    }
+
+    public static implicit operator T(ReactiveVariant<T> variant) => variant.Value; 
+    public static explicit operator ReactiveVariant<T>(T value) => new(value);
+
+    public static bool operator !=(ReactiveVariant<T> a, T b) => !(a.Value.Equals(b)); 
+    public static bool operator ==(ReactiveVariant<T> a, T b) => a.Value.Equals(b);
+
     public T Value
     {
-        get => reactiveValue;
+        get => (reactiveValue ?? default) ?? throw new NullReferenceException();
         set
         { 
             reactiveValue = value; 
-            EmitSignal(SignalName.ReactiveChanged, Variant.From(reactiveValue));
+            EmitSignal(Reactive.SignalName.ReactiveChanged, Variant.From(Value));
         }
     }
 
@@ -58,7 +91,7 @@ public partial class ReactiveVariant<[MustBeVariant] T> : Reactive
 /// <para>Emits <see cref="GoldenHand.Data.Reactive.ReactiveChanged"/> signal when operating on array</para> 
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public partial class ReactiveArray<[MustBeVariant] T> : Reactive
+public partial class ReactiveArray<[MustBeVariant] T> : Reactive, IReadOnlyReactiveArray<T>
 {
     private int capacity;
     private int size;
@@ -70,7 +103,7 @@ public partial class ReactiveArray<[MustBeVariant] T> : Reactive
     public ReactiveArray()
     {
         size = 0;
-        capacity = 0;
+        capacity = 1;
         reactiveValues = new T[capacity];
     }
     public ReactiveArray(int desiredSize)
@@ -87,6 +120,7 @@ public partial class ReactiveArray<[MustBeVariant] T> : Reactive
         values.CopyTo(reactiveValues, 0);
     }
 
+    
     public T this[int i]
     {
         get => (reactiveValues[i] ?? default) ?? throw new InvalidOperationException();
@@ -96,7 +130,7 @@ public partial class ReactiveArray<[MustBeVariant] T> : Reactive
                 throw new ArgumentOutOfRangeException(nameof(i));
             
             reactiveValues[i] = value;
-            EmitSignal(SignalName.ReactiveChanged, Variant.From(reactiveValues[i]));
+            EmitSignal(Reactive.SignalName.ReactiveChanged, Variant.From(reactiveValues[i]));
         }
     } 
 
@@ -113,7 +147,7 @@ public partial class ReactiveArray<[MustBeVariant] T> : Reactive
             Resize();
         size++;
         reactiveValues[size - 1] = value;
-        EmitSignal(SignalName.ReactiveChanged, Variant.From(reactiveValues[size]));
+        EmitSignal(Reactive.SignalName.ReactiveChanged, Variant.From(reactiveValues[size - 1]));
     }
     
     /// <summary>
@@ -135,7 +169,7 @@ public partial class ReactiveArray<[MustBeVariant] T> : Reactive
        
        size--;
        
-       EmitSignal(SignalName.ReactiveChanged, Variant.From(reactiveValues[i]));
+       EmitSignal(Reactive.SignalName.ReactiveChanged, Variant.From(reactiveValues[i]));
     }
 
     private bool IsWithinSize(int index)
@@ -157,8 +191,23 @@ public partial class ReactiveArray<[MustBeVariant] T> : Reactive
         reactiveValues.CopyTo(newValues, 0);
         reactiveValues = newValues; 
 
-    }
-
+    } 
     
+}
+
+public partial class ReactiveDictionary<[MustBeVariant] TKey, [MustBeVariant] TValue> : Reactive, IReadOnlyReactiveDictionary<TKey, TValue>
+{
+    
+    private Dictionary<TKey, TValue> reactiveValues;
+
+    public TValue this[TKey key]
+    {
+        get => reactiveValues[key];
+        set => reactiveValues[key] = value;
+    }
+    
+    public bool ContainsKey(TKey key) => reactiveValues.ContainsKey(key);
+
+    public void Add(TKey key, TValue value) => reactiveValues.Add(key, value);
     
 }
