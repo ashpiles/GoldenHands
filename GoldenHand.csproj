@@ -5,5 +5,8 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Data\JSON\SceneEnvironment.json" />
+  </ItemGroup>
   <Import Project="addons\GodotInk\GodotInk.props" />
 </Project>

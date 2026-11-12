@@ -29,14 +29,14 @@ public partial class EmotionModel : GameStateModel
         }
         set
         {
-            for (int i = 0; i < Mathf.Min(value.Count, attitudes.Length); i++)
+            for (int i = 0; i < Mathf.Min(value.Count, EmotionCount); i++)
             {
                 if (!Has(mask, i))
                     attitudes[i] = Mathf.Clamp(value[i], -1f, 1f);
             }
         }
     }
- 
+
     public float this[int index]
     {
         get => attitudes[index];
@@ -60,14 +60,7 @@ public partial class EmotionModel : GameStateModel
         }
     }
 
-    public static float Strain(EmotionModel a, EmotionModel b)
-    {
-        var strain = 0f;
-        for (var index = 0; index < EmotionCount; index++)
-            strain += a[index] -  b[index];
-        
-        return strain;
-    }
+
 
     public void ApplyMask(params Emotions[] emotions)
     {
@@ -76,7 +69,10 @@ public partial class EmotionModel : GameStateModel
 
     public static EmotionModel operator +(EmotionModel a, float[] b) => Map(a, b, (x, y) => x + y);
     public static EmotionModel operator -(EmotionModel a, float[] b) => Map(a, b, (x, y) => x - y);
-    
+
+
+    public static float Strain(EmotionModel a, EmotionModel b) => 
+        Map(a, b.attitudes, (x, y) => Mathf.Abs(x) - Mathf.Abs(y)).attitudes.Aggregate(0f, (acc, emo) => acc + emo);
     public static int ToIndex(Emotions e) => BitOperations.TrailingZeroCount((int)e);
 
     public static IEnumerable<int> ToIndices(Emotions mask)
@@ -95,15 +91,13 @@ public partial class EmotionModel : GameStateModel
         
         var r = new  EmotionModel();
         for (var i = 0; i < EmotionCount; i++)
-        {
-            if (Has(a.mask, i))
-                continue;
-            a[i] = op(a[i], b[i]); 
-        }
+            r.attitudes[i] = Has(a.mask, i) ? a.attitudes[i] : op(a.attitudes[i], b[i]);
         
         return r;
     }
 
-    private static bool Has(Emotions mask, int index) => ((int)mask & (1 << index)) != 0; 
+    private static bool Has(Emotions mask, int index) => ((int)mask & (1 << index)) != 0;
 
+    public override void UpdateModel(Variant data) => ExposedAttitudes = data.As<Array<float>>(); 
+    public override Variant GetModel() => ExposedAttitudes;
 }

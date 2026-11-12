@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://132fcj20l5w2"
+path="res://.godot/imported/convo_loop.ink-044decd0f20b886db5148069c2db42db.res"
+
+[deps]
+
+source_file="res://Data/InkScripts/convo_loop.ink"
+dest_files=["res://.godot/imported/convo_loop.ink-044decd0f20b886db5148069c2db42db.res"]
+
+[params]
+
+is_main_file=false
+compress=true

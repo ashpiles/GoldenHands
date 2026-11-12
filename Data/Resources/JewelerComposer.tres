@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterComposerModel" format=3 uid="uid://bh6upu8kye0d1"]
+
+[ext_resource type="Resource" uid="uid://cj6qib2pm42i" path="res://Data/InkScripts/jeweler_composer.ink" id="1_gbxoc"]
+[ext_resource type="Script" uid="uid://tf2qtaoksite" path="res://Data/Models/CharacterComposerModel.cs" id="1_pyl0k"]
+
+[resource]
+script = ExtResource("1_pyl0k")
+ComposerScript = ExtResource("1_gbxoc")
+TopicAttitudes = null
+AttitudesTowardsParties = null
+BelievedPartyAttitudes = null
+Trust = null
+metadata/_custom_type_script = "uid://tf2qtaoksite"

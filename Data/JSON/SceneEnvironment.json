@@ -1,0 +1,14 @@
+{
+  "0001" : {"flag1" :  ["args"] },
+  "0002" : {
+    "relations" : 
+    {
+      "actor1" : { 
+        "happiness" :  1,
+        "sadness" : 1,
+        "disgust" : 2
+      },
+      "actor2" : {"ect" :  23}
+    } 
+  }
+}

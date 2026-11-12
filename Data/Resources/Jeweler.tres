@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterComposerModel" format=3 uid="uid://dx1u2kxot54an"]
+
+[ext_resource type="Script" uid="uid://tf2qtaoksite" path="res://Data/Models/CharacterComposerModel.cs" id="1_t0na0"]
+
+[resource]
+script = ExtResource("1_t0na0")
+TopicAttitudes = Dictionary[String, Object]({})
+AttitudesTowardsParties = null
+BelievedPartyAttitudes = {}
+Trust = Dictionary[Object, float]({})
+metadata/_custom_type_script = "uid://tf2qtaoksite"

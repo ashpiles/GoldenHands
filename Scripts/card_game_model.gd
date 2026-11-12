@@ -1,10 +1,13 @@
 extends Control
 
 @onready var draggableNodePaths : Dictionary = {}
+@export var composer: CharacterComposerModel
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("starting test")
+	composer.Test()
 	pass # Replace with function body.
 
 
